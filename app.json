@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "CameraAppTutorial",
-    "slug": "CameraAppTutorial",
-    "version": "1.0.0",
+    "name": "CAAKE App",
+    "slug": "CAAKE App",
+    "version": "1.1.0",
     "orientation": "portrait",
     "platforms": ["ios", "android"],
     "icon": "./assets/icon.png",
