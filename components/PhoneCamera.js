@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Camera, CameraType } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
 import * as ImagePicker from 'expo-image-picker';
-import Button from './components/Buttons';
+import Button from "./Buttons"
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { shareAsync } from 'expo-sharing';
 import { StatusBar } from 'expo-status-bar';
@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width / 3, // Divide by the number of columns
     height: Dimensions.get('window').width / 3, 
     margin: 2, 
-  })  
+    }
+})
 
 const PhoneCamera = () => {
   

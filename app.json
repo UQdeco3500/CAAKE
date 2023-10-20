@@ -5,7 +5,6 @@
     "version": "1.1.0",
     "orientation": "portrait",
     "platforms": ["ios", "android"],
-    "icon": "./assets/icon.png",
     "permissions": {
       "camera": {
         "allowsRecording": true,
@@ -13,12 +12,6 @@
       },
       "mediaLibraryWrite": true,
       "mediaLibraryRead": true
-    },
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    
     },
     "plugins": [
       [
