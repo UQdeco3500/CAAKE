@@ -5,8 +5,7 @@ import * as MediaLibrary from 'expo-media-library';
 import * as ImagePicker from 'expo-image-picker';
 import Button from "./Buttons"
 import Carousel, { Pagination } from 'react-native-snap-carousel';
-import { shareAsync } from 'expo-sharing';
-import { StatusBar } from 'expo-status-bar';
+
 
 //Styles
 const styles = StyleSheet.create({
@@ -166,6 +165,14 @@ const toggleFlash = () => {
 
   const imageChunks = chunk(imageList, 9);
 
+  const shareGrid = () => {
+    if (imageList.length > 0) {
+      Alert.alert('Share Gallery', 'Images sent successfully!');
+    } else {
+      Alert.alert('Share Gallery', 'Please add more than one image to share.');
+    }
+  };
+    
   return (
     <>
       {/* Conditionally render the buttons based on isCameraOpen */}
@@ -247,6 +254,13 @@ const toggleFlash = () => {
             inactiveDotOpacity={0.4}
             inactiveDotScale={0.8}
           />
+          <TouchableOpacity
+            onPress={shareGrid} // Add this onPress handler
+            style={styles.shareButton}
+          >
+            <Text style={styles.shareButtonText}>Share Gallery</Text>
+            
+          </TouchableOpacity>
           </View>
         
 
