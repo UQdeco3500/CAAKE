@@ -11,6 +11,13 @@ const Tabs = () => {
         <Tab.Navigator
 
         >
+            <Tab.Screen 
+                name="PictureScreen"
+                component={PictureScreen}
+                options={{
+                    headerShown: false
+                }}
+            />
 
             <Tab.Screen 
                 name="HomeScreen"
