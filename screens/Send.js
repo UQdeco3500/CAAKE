@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { SafeAreaView, View, Text, FlatList, TextInput, StyleSheet, Button, Pressable, Alert } from "react-native";
 import { FontAwesome5 } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 // import { styles } from '../data/styles';
 
 const Send = ({ navigation }) => {
@@ -8,17 +9,27 @@ const Send = ({ navigation }) => {
 
     return (
         <SafeAreaView>
+
             <Text style={styles.heading}>
-                <FontAwesome5 name="paper-plane" size={24} color="#126F90"/>
+                        <FontAwesome5 name="paper-plane" size={24} color="#126F90"/>
+                        <Text style={styles.send}>
+                            SEND
+                        </Text>
+            </Text>
+            <Text style={styles.streaks}>
+                <FontAwesome5 name="fire" size={24} color="tomato"/> 
                 <Text style={styles.send}>
-                    SEND
+                    12 DAYS
                 </Text>
             </Text>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', paddingLeft: 30, paddingRight: 10}}>
+            <Entypo name="new-message" size={24} color="gray" paddingTop={28}/>
             <TextInput
                 style={styles.input}
                 onChangeText={onChangeText}
                 value={text}
             />
+            </View>
             
         </SafeAreaView>
 
@@ -32,9 +43,10 @@ export default Send;
 const styles = StyleSheet.create({
     input: {
       height: 40,
-      margin: 30,
+      margin: 20,
       borderWidth: 1,
-      padding: 10,
+      paddingLeft: 70,
+      paddingRight: 70, 
       backgroundColor: 'white',
       color: 'gray',
       textAlign: 'center',
@@ -64,6 +76,14 @@ const styles = StyleSheet.create({
 
     send: {
         letterSpacing: 0,
+    },
+
+    streaks: {
+        fontSize: 15,
+        alignSelf: 'flex-end',
+        paddingRight: 30,
+        letterSpacing: 10,
+        color: 'tomato'
     },
 
   });
