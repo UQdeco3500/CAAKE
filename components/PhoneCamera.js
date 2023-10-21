@@ -10,34 +10,36 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 //Styles
 const styles = StyleSheet.create({
     container: {
+    paddingTop: 80,
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#4ABCDE',
     alignItems: 'center',
-    paddingBottom: 15,
+    paddingBottom: 25,
   },
 
   camera: {
     flex: 1,
-    borderRadius: 20,
+    borderRadius: 30,
   },
 
   closeButton: {
-    position: 'absolute',
-    bottom: 70,
-    right: 20,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    padding: 10,
-    borderRadius: 5,
+    alignSelf: 'center' ,
+    bottom: 700,
+    padding: 5,
+    width: 200,
+    height: 60,
+    borderRadius: 30,
     zIndex: 1,
+    textAlign: 'center',
   },
 
   buttonSection: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 50,
-    position: 'absolute',
-    bottom: 20,
+    alignSelf: 'center',
+    top: 500,
+    borderRadius: 25,
+    height: 95,
+    paddingTop: 10,
     left: 0,
     right: 0,
   },
@@ -46,6 +48,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingBottom: 100,
   },
 
    paginationContainer: {
@@ -114,6 +117,11 @@ const saveImage = async () => {
       const newImages = [...imageList, { type: 'camera', uri: data.uri }];
       setImageList(newImages);
       setIsPictureTaken(true);
+
+      // Display an alert to indicate the image has been added
+      Alert.alert(
+        'Image Added'
+      );
     } catch (e) {
       console.log('Error taking picture:', e);
     }
@@ -194,7 +202,8 @@ const toggleFlash = () => {
 				<View style={{
 					flexDirection: 'row',
 					justifyContent: 'space-between',
-					padding: 30,
+					padding: 50,
+          paddingTop: 60,
 				}}>
 					<Button icon={'retweet'} onPress={() => {
 							setType(type === Camera.Constants.Type.back ? Camera.Constants.Type.front : Camera.Constants.Type.back);
@@ -212,14 +221,14 @@ const toggleFlash = () => {
 					</View>
 					:
 					<View style={styles.buttonSection}>
-						<Button title="Take a Picture" icon="camera" onPress={takePicture} />
+						<Button pictureIcon="circle" onPress={takePicture} />
 					</View>
 				}
 			</Camera>
 
 			{/* Button to close the camera */}
 			<View style={styles.closeButton}>
-				<Button title="Close Camera" icon="cross" onPress={closeCamera} />
+				<Button color='white' title="CLOSE" icon="cross" onPress={closeCamera} />
 			</View>
 		</>
 		) : (

@@ -17,7 +17,7 @@ const Send = ({ navigation }) => {
                         </Text>
             </Text>
             <Text style={styles.streaks}>
-                <FontAwesome5 name="fire" size={24} color="#4ABCDE"/> 
+                <FontAwesome5 name="plane" size={24} color="#4ABCDE"/> 
                 <Text style={styles.send}>
                     12 DAYS
                 </Text>
