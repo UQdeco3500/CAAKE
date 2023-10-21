@@ -173,101 +173,103 @@ const toggleFlash = () => {
     }
   };
     
-  return (
-    <>
-      {/* Conditionally render the buttons based on isCameraOpen */}
-      {!isCameraOpen && (
-        <View style={styles.container}>
-          <Button title="Choose a Photo" icon="folder-images" onPress={pickImage} />
-          <Button title="Open Camera" icon="camera" onPress={openCamera} />
-        </View>
-      )}
+	return (
+	<>
+		{/* Conditionally render the buttons based on isCameraOpen */}
+		{!isCameraOpen && (
+			<View style={styles.container}>
+				<Button title="Choose a Photo" icon="folder-images" onPress={pickImage} />
+				<Button title="Open Camera" icon="camera" onPress={openCamera} />
+			</View>
+		)}
 
-      {isCameraOpen ? (
-        <>
-          <Camera
-            style={styles.camera}
-            type={type}
-            flashMode={flash}
-            ref={cameraRef}
-          >
-            <View style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              padding: 30,
-            }}>
-              <Button icon={'retweet'} onPress={() => {
-                setType(type === Camera.Constants.Type.back ? Camera.Constants.Type.front : Camera.Constants.Type.back);
-              }} />
-              <Button icon={'flash'} onPress={toggleFlash} />
-            </View>
-            
-            {/* Button section inside the camera view */}
-            {image ?
-              <View style={styles.buttonSection}>
-                <Image source={{ uri: image }} style={styles.camera} />
-                <Button title={"Re-take"} icon="retweet" onPress={() => {setImage(null); setIsPictureTaken(false);}} />
-                <Button title={"Save"} icon="check" onPress={saveImage} />
-              </View>
-              :
-              <View style={styles.buttonSection}>
-                <Button title="Take a Picture" icon="camera" onPress={takePicture} />
-              </View>
-            }
-          </Camera>
-          {/* Button to close the camera */}
-          <View style={styles.closeButton}>
-            <Button title="Close Camera" icon="cross" onPress={closeCamera} />
-          </View>
-        </>
-      ) : (
-        <>
-        <Image source={{ uri: image }} style={styles.camera} />
-        <View style={styles.gridContainer}>
-          <Carousel
-            data={imageChunks}
-            renderItem={({ item }) => (
-              <FlatList
-                data={item}
-                keyExtractor={(item, index) => index.toString()}
-                numColumns={3}
-                renderItem={({ item }) => (
-                  <Image
-                    source={{ uri: item.uri }}
-                    style={styles.gridImage}
-                  />
-                )}
-              />
-            )}
-            sliderWidth={Dimensions.get('window').width}
-            itemWidth={Dimensions.get('window').width}
-            onSnapToItem={(index) => setActiveSlide(index)}
-          />
-          </View>
-          <View style={styles.carouselContainer}>
-          <Pagination
-            dotsLength={imageChunks.length}
-            activeDotIndex={activeSlide}
-            containerStyle={styles.paginationContainer}
-            dotColor={'blue'}
-            inactiveDotColor={'gray'}
-            inactiveDotOpacity={0.4}
-            inactiveDotScale={0.8}
-          />
-          <TouchableOpacity
-            onPress={shareGrid} // Add this onPress handler
-            style={styles.shareButton}
-          >
-            <Text style={styles.shareButtonText}>Share Gallery</Text>
-            
-          </TouchableOpacity>
-          </View>
-        
+		{isCameraOpen ? (
+		<>
+			<Camera
+				style={styles.camera}
+				type={type}
+				flashMode={flash}
+				ref={cameraRef}
+			>
+				<View style={{
+					flexDirection: 'row',
+					justifyContent: 'space-between',
+					padding: 30,
+				}}>
+					<Button icon={'retweet'} onPress={() => {
+							setType(type === Camera.Constants.Type.back ? Camera.Constants.Type.front : Camera.Constants.Type.back);
+						}} 
+					/>
+					<Button icon={'flash'} onPress={toggleFlash} />
+				</View>
+				
+				{/* Button section inside the camera view */}
+				{image ?
+					<View style={styles.buttonSection}>
+						<Image source={{ uri: image }} style={styles.camera} />
+						<Button title={"Re-take"} icon="retweet" onPress={() => {setImage(null); setIsPictureTaken(false);}} />
+						<Button title={"Save"} icon="check" onPress={saveImage} />
+					</View>
+					:
+					<View style={styles.buttonSection}>
+						<Button title="Take a Picture" icon="camera" onPress={takePicture} />
+					</View>
+				}
+			</Camera>
 
-        </>
-      )}
-    </>
-  );
+			{/* Button to close the camera */}
+			<View style={styles.closeButton}>
+				<Button title="Close Camera" icon="cross" onPress={closeCamera} />
+			</View>
+		</>
+		) : (
+		<>
+			<Image source={{ uri: image }} style={styles.camera} />
+			<View style={styles.gridContainer}>
+				<Carousel
+					data={imageChunks}
+					renderItem={({ item }) => (
+						<FlatList
+							data={item}
+							keyExtractor={(item, index) => index.toString()}
+							numColumns={3}
+							renderItem={({ item }) => (
+								<Image
+									source={{ uri: item.uri }}
+									style={styles.gridImage}
+								/>
+							)}
+						/>
+					)}
+					sliderWidth={Dimensions.get('window').width}
+					itemWidth={Dimensions.get('window').width}
+					onSnapToItem={(index) => setActiveSlide(index)}
+				/>
+				<View style={styles.carouselContainer}>
+					<Pagination
+						dotsLength={imageChunks.length}
+						activeDotIndex={activeSlide}
+						containerStyle={styles.paginationContainer}
+						dotColor={'blue'}
+						inactiveDotColor={'gray'}
+						inactiveDotOpacity={0.4}
+						inactiveDotScale={0.8}
+					/>
+					<TouchableOpacity
+						onPress={shareGrid} // Add this onPress handler
+						style={styles.shareButton}
+					>
+						<Text style={styles.shareButtonText}>Share Gallery</Text>
+					
+					</TouchableOpacity>
+				</View>
+			</View>
+		
+
+		</>
+		)}
+	</>
+	);
 }
 
 export default PhoneCamera
