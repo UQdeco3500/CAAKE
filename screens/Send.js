@@ -17,12 +17,12 @@ const Send = ({ navigation }) => {
                         </Text>
             </Text>
             <Text style={styles.streaks}>
-                <FontAwesome5 name="fire" size={24} color="tomato"/> 
+                <FontAwesome5 name="fire" size={24} color="#4ABCDE"/> 
                 <Text style={styles.send}>
                     12 DAYS
                 </Text>
             </Text>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', paddingLeft: 30, paddingRight: 10}}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', paddingLeft: 30, paddingRight: 10, paddingTop: 25, }}>
             <Entypo name="new-message" size={24} color="gray" paddingTop={28}/>
             <TextInput
                 style={styles.input}
@@ -36,6 +36,18 @@ const Send = ({ navigation }) => {
                 <Text style={styles.albumName}>
                     October Travel
                 </Text>
+                <Text style={styles.date}>
+                    Last Edited        10/10/2023
+                </Text>
+
+                <Pressable
+                    style={styles.button}
+                    title="Send"
+                    onPress={() => Alert.alert('Sent')}>
+                    <Text style={styles.buttonText}>
+                        SEND
+                    </Text>
+                </Pressable>
 
             </View>
             
@@ -70,7 +82,8 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         margin: 20,
         elevation: 3,
-        backgroundColor: 'white',
+        color: 'white',
+        backgroundColor: '#126F90',
       },
 
     heading: {
@@ -91,14 +104,14 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         paddingRight: 30,
         letterSpacing: 10,
-        color: 'tomato'
+        color: '#4ABCDE'
     },
 
     image: {
         alignSelf: 'center',
-        width: 300,
-        height: 300,
-        marginTop: 60,
+        width: 250,
+        height: 250,
+        marginTop: 40,
         marginBottom: 25,
         borderRadius: 10,
 
@@ -109,6 +122,29 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#126F90',
         fontWeight: 'bold',
+    },
+
+    date: {
+        alignSelf: 'center',
+        fontSize: 15,
+        marginTop: 20,
+        color: '#126F90',
+    },
+
+    button: {
+        backgroundColor: '#4ABCDE',
+        alignSelf: 'center',
+        justifyContent: 'center',
+        borderRadius: 20,
+        padding: 10,
+        width: 280,
+        margin: 20,
+    },
+
+    buttonText: {
+        textAlign: 'center',
+        fontSize: 20,
+        color:'white',
     }
 
   });
