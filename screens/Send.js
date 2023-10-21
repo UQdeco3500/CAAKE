@@ -8,10 +8,11 @@ const Send = ({ navigation }) => {
 
     return (
         <SafeAreaView>
-            <FontAwesome5 style={styles.icon} name="paper-plane" size={24} color="#126F90"/>
             <Text style={styles.heading}>
-                {/* <FontAwesome5 name="paper-plane" size={24} color="#126F90"/> */}
-                SEND
+                <FontAwesome5 name="paper-plane" size={24} color="#126F90"/>
+                <Text style={styles.send}>
+                    SEND
+                </Text>
             </Text>
             <TextInput
                 style={styles.input}
@@ -35,7 +36,8 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       padding: 10,
       backgroundColor: 'white',
-      color: '#126F90',
+      color: 'gray',
+      textAlign: 'center',
       borderRadius: 10,
       borderColor: 'white',
     },
@@ -53,15 +55,15 @@ const styles = StyleSheet.create({
 
     heading: {
         paddingLeft: 30,
+        paddingTop: 40,
         fontSize: 25,
         color: '#126F90',
         fontWeight: 'bold',
+        letterSpacing: 10,
     },
 
-    icon: {
-        paddingLeft: 20,
-        paddingTop: 10,
-
+    send: {
+        letterSpacing: 0,
     },
 
   });
