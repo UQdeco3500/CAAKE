@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
 
 const PhoneCamera = () => {
   
-  const [hasCameraPermission, setHasCameraPermission] = useState(null);
+//   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [image, setImage] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
@@ -74,13 +74,13 @@ const PhoneCamera = () => {
   const [imageList, setImageList] = useState([]);
 
 //Obtaining permissions
-  useEffect(() => {
-    (async () => {
-      MediaLibrary.requestPermissionsAsync();
-      const cameraStatus   = await Camera.requestCameraPermissionsAsync();
-      setHasCameraPermission(cameraPermission.status === "granted");
-    })();
-  }, []);
+//   useEffect(() => {
+//     (async () => {
+//       MediaLibrary.requestPermissionsAsync();
+//       const cameraStatus   = await Camera.requestCameraPermissionsAsync();
+//       setHasCameraPermission(cameraPermission.status === "granted");
+//     })();
+//   }, []);
 
 // Function to open the camera
   const openCamera = () => {
@@ -130,7 +130,7 @@ const pickImage = async () => {
     aspect: [4, 3],
   });
 
-  if (!result.cancelled) {
+  if (!result.canceled) {
     const newImages = [...imageList, { type: 'gallery', uri: result.uri }];
     setImageList(newImages);
   } else {
