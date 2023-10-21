@@ -2,7 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from '@react-navigation/native';
 import PictureScreen from "../screens/PictureScreen";
-import HomeScreen from "../screens/HomeScreen";
+import Send from "../screens/Send";
 import PhoneCamera from "./PhoneCamera";
 import { FontAwesome5 } from '@expo/vector-icons';
 
@@ -20,7 +20,7 @@ const Tabs =() => {
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
 
-                    if (route.name === 'HomeScreen') {
+                    if (route.name === 'Send') {
                         iconName = focused ? 'paper-plane' : 'paper-plane';
                     }
                     else if (route.name === 'PhoneCamera'){
@@ -37,8 +37,8 @@ const Tabs =() => {
 
         >
             <Tab.Screen 
-                name="HomeScreen"
-                component={HomeScreen}
+                name="Send"
+                component={Send}
                 options={{
                     headerShown: false
                 }}
