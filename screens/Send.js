@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { SafeAreaView, View, Text, FlatList, TextInput, StyleSheet, Button, Pressable, Alert } from "react-native";
+import { SafeAreaView, View, Text, Image, TextInput, StyleSheet, Button, Pressable, Alert } from "react-native";
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-// import { styles } from '../data/styles';
+import '../data/sample.png';
 
 const Send = ({ navigation }) => {
     const [text, onChangeText] = React.useState('Enter your message here...');
@@ -30,17 +30,25 @@ const Send = ({ navigation }) => {
                 value={text}
             />
             </View>
+            <View>
+                <Image source={require('../data/sample.png')}
+                style={styles.image}/>
+                <Text style={styles.albumName}>
+                    October Travel
+                </Text>
+
+            </View>
             
         </SafeAreaView>
 
     )
-    
 
 };
 
 export default Send;
 
 const styles = StyleSheet.create({
+    
     input: {
       height: 40,
       margin: 20,
@@ -85,5 +93,22 @@ const styles = StyleSheet.create({
         letterSpacing: 10,
         color: 'tomato'
     },
+
+    image: {
+        alignSelf: 'center',
+        width: 300,
+        height: 300,
+        marginTop: 60,
+        marginBottom: 25,
+        borderRadius: 10,
+
+    },
+
+    albumName: {
+        alignSelf: 'center',
+        fontSize: 20,
+        color: '#126F90',
+        fontWeight: 'bold',
+    }
 
   });

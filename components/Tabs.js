@@ -8,11 +8,6 @@ import { FontAwesome5 } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
-const TabIcon =(icon, color) => {
-    return(
-        <FontAwesome5 name={icon} size={28} color={color ? color : '#000'} />
-    )
-}
 const Tabs =() => {
     return (
         <Tab.Navigator
@@ -28,6 +23,7 @@ const Tabs =() => {
                     }
                     return <FontAwesome5 name={iconName} size={size} color={color} />
                 },
+
             })}
 
                 tabBarOptions={{
