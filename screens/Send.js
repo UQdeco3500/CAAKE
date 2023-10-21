@@ -5,7 +5,7 @@ import { Entypo } from '@expo/vector-icons';
 import '../data/sample.png';
 
 const Send = ({ navigation }) => {
-    const [text, onChangeText] = React.useState('Enter your message here...');
+    const [text, onChangeText] = React.useState('Enter Your Message');
 
     return (
         <SafeAreaView>
@@ -23,11 +23,14 @@ const Send = ({ navigation }) => {
                 </Text>
             </Text>
             <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', paddingLeft: 30, paddingRight: 10, paddingTop: 25, }}>
-            <Entypo name="new-message" size={24} color="gray" paddingTop={28}/>
+            <Entypo name="new-message" size={24} color="gray" paddingTop={28} marginLeft={0}/>
             <TextInput
                 style={styles.input}
                 onChangeText={onChangeText}
                 value={text}
+                numberOfLines={1}
+                fontSize={14}
+                color= 'gray'
             />
             </View>
             <View>
@@ -64,6 +67,7 @@ const styles = StyleSheet.create({
     input: {
       height: 40,
       margin: 20,
+      marginLeft: 8,
       borderWidth: 1,
       paddingLeft: 70,
       paddingRight: 70, 
@@ -103,6 +107,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         alignSelf: 'flex-end',
         paddingRight: 30,
+        paddingBottom: 15,
         letterSpacing: 10,
         color: '#4ABCDE'
     },
@@ -111,7 +116,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         width: 250,
         height: 250,
-        marginTop: 40,
+        marginTop: 20,
         marginBottom: 25,
         borderRadius: 10,
 
