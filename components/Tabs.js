@@ -36,6 +36,17 @@ const Tabs =() => {
                 options={{
                     headerShown: false
                 }}
+                listeners={({ navigation, route }) => ({ // Goes to the first stack screen in the stack if this tab is pressed
+                    tabPress: (e) => {
+                        if (route.name === "PhotoStack") {
+                            e.preventDefault();
+                            navigation.reset({
+                                index: 0, // Reset to the first screen in the stack
+                                routes: [{ name: 'PhotoStack' }], // Specify the current route
+                            });
+                        }
+                    },
+                })}
             />
 
             <Tab.Screen 

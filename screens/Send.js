@@ -1,11 +1,16 @@
-import * as React from 'react';
-import { SafeAreaView, View, Text, Image, TextInput, StyleSheet, TouchableOpacity, Alert } from "react-native";
+import React, { useState } from 'react';
+import { SafeAreaView, View, Text, Image, TextInput, StyleSheet, TouchableOpacity, Alert, ActivityIndicator } from "react-native";
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import '../data/sample.png';
 
 const Send = ({ navigation }) => {
-    const [text, onChangeText] = React.useState('Enter Your Message');
+    const [text, onChangeText] = useState("");
+    const [loading, isLoading] = useState(true);
+
+    const imageLoaded = () => {
+        isLoading(false);
+    }
 
     return (
         <SafeAreaView>
@@ -30,15 +35,20 @@ const Send = ({ navigation }) => {
                     value={text}
                     numberOfLines={1}
                     fontSize={14}
-                    color= 'gray'
+                    placeholderTextColor= 'gray'
+                    clearTextOnFocus={true}
+                    placeholder={"Enter Your Message"}
                 />
             </View>
             <View>
                 <TouchableOpacity onPress={() => navigation.navigate("PhoneCamera")}>
+                    {loading && <ActivityIndicator size={"large"}  color={"#126F90"}/>}
                     <Image source={require('../data/sample.png')}
                         style={styles.image}
+                        onLoad={imageLoaded}
                     />
                 </TouchableOpacity>
+                
                 <Text style={styles.albumName}>
                     October Travel
                 </Text>
@@ -72,13 +82,12 @@ const styles = StyleSheet.create({
       margin: 20,
       marginLeft: 8,
       borderWidth: 1,
-      paddingLeft: 70,
-      paddingRight: 70, 
       backgroundColor: 'white',
       color: 'gray',
       textAlign: 'center',
       borderRadius: 10,
       borderColor: 'white',
+      width: "70%"
     },
     
     button: {

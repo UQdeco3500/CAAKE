@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity, Alert, Dimensions, FlatList } from 'react-native';
-import React, { useEffect, useRef, useState } from 'react';
-import { Camera, CameraType } from 'expo-camera';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, Dimensions, FlatList } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { Camera } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
 import * as ImagePicker from 'expo-image-picker';
 import Button from "./Buttons"
@@ -75,15 +75,6 @@ const PhoneCamera = () => {
   const [carouselImages, setCarouselImages] = useState([]);
   const [activeSlide, setActiveSlide] = useState(0);
   const [imageList, setImageList] = useState([]);
-
-//Obtaining permissions
-//   useEffect(() => {
-//     (async () => {
-//       MediaLibrary.requestPermissionsAsync();
-//       const cameraStatus   = await Camera.requestCameraPermissionsAsync();
-//       setHasCameraPermission(cameraPermission.status === "granted");
-//     })();
-//   }, []);
 
 // Function to open the camera
   const openCamera = () => {
@@ -203,7 +194,7 @@ const toggleFlash = () => {
 					flexDirection: 'row',
 					justifyContent: 'space-between',
 					padding: 50,
-          paddingTop: 60,
+                    paddingTop: 60,
 				}}>
 					<Button icon={'retweet'} onPress={() => {
 							setType(type === Camera.Constants.Type.back ? Camera.Constants.Type.front : Camera.Constants.Type.back);
