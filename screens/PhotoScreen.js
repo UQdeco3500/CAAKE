@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, Dimensions, FlatList, Modal, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, Dimensions, FlatList, Modal, SafeAreaView, TextInput } from 'react-native';
 import React, { useRef, useState, useContext } from 'react';
 import { Camera } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: 100,
+    paddingBottom: 100
   },
 
    paginationContainer: {
@@ -71,9 +71,21 @@ const styles = StyleSheet.create({
         color: '#126F90',
         fontWeight: 'bold',
     },
+    input: {
+        height: 40,
+        margin: 20,
+        marginLeft: 8,
+        borderWidth: 1,
+        backgroundColor: 'white',
+        color: 'gray',
+        textAlign: 'center',
+        borderRadius: 10,
+        borderColor: 'white',
+        width: "70%"
+      },
 })
 
-const PhoneCamera = () => {
+const PhoneCamera = ({ navigation }) => {
   
 //   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [image, setImage] = useState(null);
@@ -229,14 +241,23 @@ const toggleFlash = () => {
 		</>
 		) : (
 		<SafeAreaView style={{ justifyContent: "space-between", flex: 1}}>
-            <Text style={styles.heading}>
-                        <FontAwesome5 name="paper-plane" size={24} color="#126F90"/>
-                        <Text style={styles.send}>
-                            SEND
-                        </Text>
-            </Text>
-			<Image source={{ uri: image }} style={styles.camera} />
-			<View style={styles.gridContainer}>
+            <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <FontAwesome5 name="chevron-left" size={24} color="#126F90" style={{ position: "relative", right: 15}}/>
+                </TouchableOpacity>
+                <TextInput
+                    style={styles.input}
+                    // onChangeText={setNameOfAlbum}
+                    // value={nameOfAlbum} 
+                    // need to look into why this doesn't work ^^
+                    numberOfLines={1}
+                    fontSize={14}
+                    placeholderTextColor= 'gray'
+                    clearTextOnFocus={true}
+                    placeholder={"Album Name"}
+                />
+            </View>
+			<View >
 				<Carousel
 					data={imageChunks}
 					renderItem={({ item }) => (
