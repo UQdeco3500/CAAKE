@@ -1,12 +1,12 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, Dimensions, FlatList, Modal, SafeAreaView } from 'react-native';
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useContext } from 'react';
 import { Camera } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
 import * as ImagePicker from 'expo-image-picker';
 import Button from "../components/Buttons"
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { Touchable } from 'react-native';
+import { useAppContext } from "../components/appContext"
 
 
 //Styles
@@ -62,7 +62,15 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width / 3, // Divide by the number of columns
     height: Dimensions.get('window').width / 3, 
     margin: 2, 
-    }
+    },
+
+    heading: {
+        paddingLeft: 30,
+        paddingTop: 40,
+        fontSize: 25,
+        color: '#126F90',
+        fontWeight: 'bold',
+    },
 })
 
 const PhoneCamera = () => {
@@ -76,8 +84,8 @@ const PhoneCamera = () => {
   const [isPictureTaken, setIsPictureTaken] = useState(false);
   const [carouselImages, setCarouselImages] = useState([]);
   const [activeSlide, setActiveSlide] = useState(0);
-  const [imageList, setImageList] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const { imageList, setImageList } = useAppContext();
 
 // Function to open the camera
   const openCamera = () => {
@@ -220,7 +228,13 @@ const toggleFlash = () => {
 			</View>
 		</>
 		) : (
-		<>
+		<SafeAreaView style={{ justifyContent: "space-between", flex: 1}}>
+            <Text style={styles.heading}>
+                        <FontAwesome5 name="paper-plane" size={24} color="#126F90"/>
+                        <Text style={styles.send}>
+                            SEND
+                        </Text>
+            </Text>
 			<Image source={{ uri: image }} style={styles.camera} />
 			<View style={styles.gridContainer}>
 				<Carousel
@@ -318,7 +332,7 @@ const toggleFlash = () => {
                 <FontAwesome5 name="plus-square" size={48} color="#126F90" style={{alignSelf: "center", marginBottom: 10 }}/>
             </TouchableOpacity>
 
-		</>
+		</SafeAreaView>
 		)}
 	</>
 	);
