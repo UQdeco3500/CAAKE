@@ -1,10 +1,12 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, Dimensions, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, Dimensions, FlatList, Modal, SafeAreaView } from 'react-native';
 import React, { useRef, useState } from 'react';
 import { Camera } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
 import * as ImagePicker from 'expo-image-picker';
-import Button from "./Buttons"
+import Button from "../components/Buttons"
 import Carousel, { Pagination } from 'react-native-snap-carousel';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { Touchable } from 'react-native';
 
 
 //Styles
@@ -75,6 +77,7 @@ const PhoneCamera = () => {
   const [carouselImages, setCarouselImages] = useState([]);
   const [activeSlide, setActiveSlide] = useState(0);
   const [imageList, setImageList] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
 
 // Function to open the camera
   const openCamera = () => {
@@ -174,13 +177,7 @@ const toggleFlash = () => {
     
 	return (
 	<>
-		{/* Conditionally render the buttons based on isCameraOpen */}
-		{!isCameraOpen && (
-			<View style={styles.container}>
-				<Button title="Choose a Photo" icon="folder-images" onPress={pickImage} />
-				<Button title="Open Camera" icon="camera" onPress={openCamera} />
-			</View>
-		)}
+
 
 		{isCameraOpen ? (
 		<>
@@ -264,7 +261,62 @@ const toggleFlash = () => {
 					</TouchableOpacity>
 				</View>
 			</View>
-		
+            <Modal
+                animationType='fade'
+                transparent={true}
+                visible={modalOpen}
+            >
+                <View style={{ flex: 1, justifyContent: "flex-end", backgroundColor: "rgba(0,0,0,0.4)"}}>
+                    <SafeAreaView style={{ flex: 0.25, justifyContent: "space-between", alignItems: "center"}}>
+                       <View style={{width: "90%", marginBottom: 5}}>
+                           <TouchableOpacity onPress={pickImage}>
+                               <View style={{
+                                    backgroundColor: "white", 
+                                    justifyContent: "center", 
+                                    flexDirection: "row", 
+                                    borderTopStartRadius: 20, 
+                                    borderTopEndRadius: 20, 
+                                    paddingVertical: 20,
+                                    borderBottomColor: "grey",
+                                    borderBottomWidth: 1
+                                }}>
+                                    <FontAwesome5 name="image" size={24} color="#126F90" />
+                                    <Text style={{ marginLeft: 10 }}>
+                                        Photo Gallery
+                                    </Text>
+                               </View>
+                           </TouchableOpacity>
+                           <TouchableOpacity onPress={openCamera}>
+                               <View style={{
+                                    backgroundColor: "white", 
+                                    justifyContent: "center", 
+                                    flexDirection: "row", 
+                                    borderBottomStartRadius: 20, 
+                                    borderBottomEndRadius: 20, 
+                                    paddingVertical: 20}}
+                                >
+                                    <FontAwesome5 name="camera" size={24} color="#126F90" />
+                                    <Text style={{ marginLeft: 10 }}>
+                                        Camera
+                                    </Text>
+                               </View>
+                           </TouchableOpacity>
+                       </View>
+
+                       <TouchableOpacity style={{ width: "90%" }} activeOpacity={0.9} onPress={() => setModalOpen(false)}>
+                           <View style={{backgroundColor: "#4e4f52", justifyContent: "center", flexDirection: "row", borderRadius: 20, paddingVertical: 20}}>
+                                <Text style={{ marginLeft: 10, color: "white" }}>
+                                    CANCEL
+                                </Text>
+                           </View>
+                       </TouchableOpacity>
+                    </SafeAreaView>
+                </View>
+            </Modal>
+
+            <TouchableOpacity onPress={() => setModalOpen(true)}>
+                <FontAwesome5 name="plus-square" size={48} color="#126F90" style={{alignSelf: "center", marginBottom: 10 }}/>
+            </TouchableOpacity>
 
 		</>
 		)}

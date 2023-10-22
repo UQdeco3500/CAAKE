@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from "@react-navigation/stack";
-import Send from '../screens/Send';
-import PhoneCamera from './PhoneCamera';
+import Send from '../screens/HomeScreen';
+import PhoneCamera from '../screens/PhotoScreen';
 
 const Stack = createStackNavigator();
 
