@@ -1,9 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from '@react-navigation/native';
-import PictureScreen from "../screens/PictureScreen";
-import Send from "../screens/Send";
-import PhoneCamera from "./PhoneCamera";
+import PhotoStack from "./PhotoStack";
+import ProfileScreen from "../screens/ProfileScreen"
 import { FontAwesome5 } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
@@ -15,10 +13,10 @@ const Tabs =() => {
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
 
-                    if (route.name === 'Send') {
+                    if (route.name === 'PhotoStack') {
                         iconName = focused ? 'paper-plane' : 'paper-plane';
                     }
-                    else if (route.name === 'PhoneCamera'){
+                    else if (route.name === 'ProfileScreen'){
                         iconName = focused ? 'images' : 'images';
                     }
                     return <FontAwesome5 name={iconName} size={size} color={color} />
@@ -33,16 +31,16 @@ const Tabs =() => {
 
         >
             <Tab.Screen 
-                name="Send"
-                component={Send}
+                name="PhotoStack"
+                component={PhotoStack}
                 options={{
                     headerShown: false
                 }}
             />
 
             <Tab.Screen 
-                name="PhoneCamera"
-                component={PhoneCamera}
+                name="ProfileScreen"
+                component={ProfileScreen}
                 options={{
                     headerShown: false
                 }}

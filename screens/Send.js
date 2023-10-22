@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SafeAreaView, View, Text, Image, TextInput, StyleSheet, Button, Pressable, Alert } from "react-native";
+import { SafeAreaView, View, Text, Image, TextInput, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import '../data/sample.png';
@@ -23,19 +23,22 @@ const Send = ({ navigation }) => {
                 </Text>
             </Text>
             <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', paddingLeft: 30, paddingRight: 10, paddingTop: 25, }}>
-            <Entypo name="new-message" size={24} color="gray" paddingTop={28} marginLeft={0}/>
-            <TextInput
-                style={styles.input}
-                onChangeText={onChangeText}
-                value={text}
-                numberOfLines={1}
-                fontSize={14}
-                color= 'gray'
-            />
+                <Entypo name="new-message" size={24} color="gray" paddingTop={28} marginLeft={0}/>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={onChangeText}
+                    value={text}
+                    numberOfLines={1}
+                    fontSize={14}
+                    color= 'gray'
+                />
             </View>
             <View>
-                <Image source={require('../data/sample.png')}
-                style={styles.image}/>
+                <TouchableOpacity onPress={() => navigation.navigate("PhoneCamera")}>
+                    <Image source={require('../data/sample.png')}
+                        style={styles.image}
+                    />
+                </TouchableOpacity>
                 <Text style={styles.albumName}>
                     October Travel
                 </Text>
@@ -43,14 +46,14 @@ const Send = ({ navigation }) => {
                     Last Edited        10/10/2023
                 </Text>
 
-                <Pressable
+                <TouchableOpacity
                     style={styles.button}
                     title="Send"
                     onPress={() => Alert.alert('Sent')}>
                     <Text style={styles.buttonText}>
                         SEND
                     </Text>
-                </Pressable>
+                </TouchableOpacity>
 
             </View>
             
