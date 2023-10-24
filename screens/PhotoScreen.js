@@ -6,7 +6,7 @@ import * as ImagePicker from 'expo-image-picker';
 import Button from "../components/Buttons"
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { useAppContext } from "../components/appContext"
+import { useAppContext } from "../components/AppContext"
 
 
 //Styles
