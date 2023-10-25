@@ -17,7 +17,7 @@ const Tabs =() => {
                         iconName = focused ? 'paper-plane' : 'paper-plane';
                     }
                     else if (route.name === 'ProfileScreen'){
-                        iconName = focused ? 'images' : 'images';
+                        iconName = focused ? 'user-circle' : 'user-circle';
                     }
                     return <FontAwesome5 name={iconName} size={size} color={color} />
                 },
