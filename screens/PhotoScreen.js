@@ -117,7 +117,7 @@ const saveImage = async () => {
         alert('Picture saved!')
         setImage(null);
       } catch (e) {
-        console.log(e)
+        //console.log(e)
       }
     }
   };
@@ -127,7 +127,7 @@ const saveImage = async () => {
   if (cameraRef.current) {
     try {
       const data = await cameraRef.current.takePictureAsync();
-      console.log('Picture taken:', data);
+      //console.log('Picture taken:', data);
       const newImages = [...imageList, { type: 'camera', uri: data.uri }];
       setImageList(newImages);
       setIsPictureTaken(true);
@@ -137,10 +137,10 @@ const saveImage = async () => {
         'Image Added'
       );
     } catch (e) {
-      console.log('Error taking picture:', e);
+      //console.log('Error taking picture:', e);
     }
   } else {
-    console.log('cameraRef is null');
+    //console.log('cameraRef is null');
   }
 };
 
