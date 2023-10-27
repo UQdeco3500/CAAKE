@@ -6,17 +6,15 @@
 If you do not already have Node.js and npm installed, you can download and install them from the official website: https://nodejs.org/
 
 ### Step 2: Install Expo CLI
-Expo CLI is a command-line tool that helps you create, manage, and run Expo projects.
-
 You can install Expo CLI globally by running this command in your terminal:
 npm install -g expo-cli
 
 ### Step 3: Install Expo in your Device
 Download Expo in Appstore or Google Playstore
 
-### Step 4: Install the required dependencies for your React Native app
-React Native: If you haven't already initialized your project with React Native, you can do so using:
-npx react-native init YourAppName
+### Step 4: Install the Required Dependencies
+React Native:
+npx react-native init AppName
 
 React Navigation:
 npm install @react-navigation/native
